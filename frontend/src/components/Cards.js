@@ -25,11 +25,11 @@ function Cards() {
                             label='Services'
                         />
 
-                        <CardItem
+                        {/* <CardItem
                             src={pic3}
                             text={<a href="https://dhruvmahalwar-forecasting-main-vo7ngi.streamlit.app/">Inventory Demand Projection and Analysis</a>}
                             label='product'
-                        />
+                        /> */}
 
 
                     </ul>

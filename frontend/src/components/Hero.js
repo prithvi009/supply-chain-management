@@ -9,17 +9,17 @@ function Hero() {
 
 
             <video src={videos} autoPlay loop muted></video>
-            <h1>CARGO
+            <h1>Ledger
 
                 <Typical
                     loop={Infinity}
                     wrapper='b'
                     steps={[
-                        'HIVE',
+                        'FLOW',
                         1000,
                         '',
                         1000,
-                        'HIVE',
+                        'FLOW',
                         1000
 
                     ]}

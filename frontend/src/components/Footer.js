@@ -4,7 +4,7 @@ import { Button } from './Button'
 import './Footer.css'
 function Footer() {
     return (
-        <div className='footer-container'>Footer
+        <div className='footer-container'>
             <section className='foot-subscription'>
                 <p className='foot-subscription-heading'>Join us to get regular update  and best deals </p>
                 <p className='foot-subscription-text'>You can subcribe any time</p>
