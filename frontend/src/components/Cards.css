@@ -5,9 +5,12 @@ video {
     position: absolute;
     z-index: -100;
 }
-
+.links{
+    color: beige;
+    cursor: pointer;
+}
 .cards_item_text a{
-    text-decoration:npne;
+    text-decoration:none;
 }
 
 .cards {
@@ -29,10 +32,11 @@ h1 {
 .cards__container {
     display: flex;
     flex-flow: column;
+    justify-content: center;
     align-items: center;
     max-width: 1120px;
     width: 90%;
-    margin: 0 auto;
+    margin: auto auto;
 }
 
 .cards__wrapper {
@@ -48,7 +52,6 @@ h1 {
     display: flex;
     flex: 1;
     margin: 0 1rem;
-    height: 500px;
     width: 400px;
     border-radius: 10px;
 }

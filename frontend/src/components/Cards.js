@@ -21,15 +21,15 @@ function Cards() {
 
                         <CardItem
                             src={pic2}
-                            text={<a href='https://6428ed806bcf2c26ed507ccb--timely-lolly-3f33f7.netlify.app//'> Product lineage tracking</a>}
+                            text={<a className='links' href='https://gleeful-gumption-a9d8b1.netlify.app/'>Administration Panel</a>}
                             label='Services'
                         />
 
-                        {/* <CardItem
+                        <CardItem
                             src={pic3}
-                            text={<a href="https://dhruvmahalwar-forecasting-main-vo7ngi.streamlit.app/">Inventory Demand Projection and Analysis</a>}
+                            text={<a className='links' href="https://dapper-gelato-31f330.netlify.app/">Customer Panel</a>}
                             label='product'
-                        /> */}
+                        />
 
 
                     </ul>
