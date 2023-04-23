@@ -78,25 +78,19 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
     </style>
-
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+    (function () {
+        emailjs.init("lHKlxlAvvIhrlDD5H");
+    })();
+</script>
+</head>
 <body>
     <div class="container">
-
-
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-        </script>
-        <script type="text/javascript">
-            (function () {
-                emailjs.init("lHKlxlAvvIhrlDD5H");
-            })();
-        </script>
-
-
         <script>
-
-
-
             var markup = null;
+            
             var flag = 1;
             const options = {
                 enableHighAccuracy: true,
@@ -149,19 +143,34 @@
                     minute: '2-digit',
                     second: '2-digit',
                 }); // format date and time as DD/MM/YYYY, HH:MM:SS
-
-
+                
                 const productId = document.getElementById("productId").value;
                 const myString = document.getElementById("secret_key").value;
                 const weight = document.getElementById("weight_check").value;
+                const btn=document.getElementById('checkme');
+                const sendm=document.getElementById('sendmail');
                 const tx = await contract.methods.addHistory(productId, "The History was added on " + formattedDateTime + " " + "and received by CENTRE-A" + "and the location of your goods is " + markup, myString, weight).send({ from: accounts[0] });
                 contract.methods.getProduct(productId).call({ from: accounts[0] }).then(async result => {
+                    sendm.seal.value=result.sealHash;
                     console.log(result.sealHash);
-                });
+            sendm.from_name.value="CargoHive";
+            sendm.email_id.value="CargoHive@gmail.com";
+            sendm.message.value="We have an update regarding your order.Your order has reached Warehouse A. Kindly Check the website for more updates.Your product Id is: ";
+
+         // these IDs from the previous steps
+         emailjs.sendForm('service_z4khvvy', 'template_jn24wqw', sendm)
+         .then(function () {
+             console.log('SUCCESS!');
+          alert('Notification successfully sent')
+         }, function (error) {
+             console.log('FAILED...', error);
+         });
+    
+                    
             }
 
-
-
+                )
+        }
 
 
 
@@ -529,7 +538,7 @@
 
         </script>
 
-
+        
         <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
 
 
@@ -541,6 +550,7 @@
             <input type="hidden" name="from_name">
             <input type="hidden" name="email_id">
             <input type="hidden" name="message">
+            <input type="hidden" name="seal">
             <div class="form-group">
                 <label for="product-id">Product ID:</label>
                 <input type="number" class="form-control" id="productId" placeholder="Enter product ID">
@@ -556,45 +566,12 @@
             <div class="form-group">
                 <label for="history">History: CENTRE-A</label>
             </div>
-            <button type="button" class="btn btn-primary" onclick="addHistory(),success(pos)">Add
+            <button type="button" class="btn btn-primary" onclick="addHistory(),success(pos)"  >Add
                 History</button>
-            <button type="submit" class="btn btn-primary">Confirm You Reached Center A</button>
-
+            <!-- <input type="hidden" name="check" value= -->
+            <!-- <button type="submit" class="btn btn-primary">Confirm You Reached Center A</button> -->
         </form>
     </div>
-
-
-
-    <script type="text/javascript">
-
-
-
-
-        window.onload = function () {
-            document.getElementById('sendmail').addEventListener('submit', function (event) {
-                event.preventDefault();
-
-                this.from_name.value = "ABCTRACTORS";
-                this.email_id.value = "abc@gmail.com";
-                this.message.value = "We have an update regarding your goods.Your goods has reached Warehouse A. Kindly Check the website for more updates.";
-
-
-                // these IDs from the previous steps
-                emailjs.sendForm('service_z4khvvy', 'template_jn24wqw', this)
-                    .then(function () {
-                        console.log('SUCCESS!');
-                     alert('Notification successfully sent')
-                    }, function (error) {
-                        console.log('FAILED...', error);
-                    });
-            });
-        }
-
-
-
-    </script>
-
-
 
 
 
@@ -603,3 +580,4 @@
 </body>
 
 </html>
+
