@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 
+
 contract ProductTraceability {
    struct Product {
        string name;
@@ -13,7 +14,7 @@ contract ProductTraceability {
        bytes32 sealHash;
        address sender;
    }
-
+  
    mapping (uint256 => Product) public products;
    uint256 public productCount;
   
@@ -21,6 +22,7 @@ contract ProductTraceability {
    event ProductHistory(uint256 id, string history);
    event SealVerified(uint256 id, bool isSealValid);
 
+   
    function createProduct(string memory _name, string memory _manufacturer, uint256 _amount, uint256 _quantity, uint256 _weight) public returns(bytes32){
        productCount++;
        bytes32 _sealHash = keccak256(abi.encodePacked(block.timestamp, msg.sender, block.difficulty));
@@ -28,11 +30,12 @@ contract ProductTraceability {
        emit NewProduct(productCount, _name, _manufacturer, _amount, _quantity, _weight, _sealHash, msg.sender);
        return _sealHash;
    }
-
-   function addHistory(uint256 _id, string memory _history, bytes32 _sealHash) public returns(bytes32 ){
+  
+   function addHistory(uint256 _id, string memory _history, bytes32 _sealHash, uint256 _weight) public returns(bytes32 ){
        require(_id > 0 && _id <= productCount, "Invalid product ID");
        Product storage product = products[_id];
        require(product.sealHash == _sealHash);
+       require(product.weight == _weight);
        product.history.push(_history);
        emit ProductHistory(_id, _history);
 
@@ -46,7 +49,7 @@ contract ProductTraceability {
        Product storage product = products[_id];
        return (product.name, product.manufacturer, product.amount, product.quantity, product.weight, product.history, product.sealHash, product.sender);
    }
-   
+  
    function getAllProducts() public view returns (uint256[] memory, string[] memory, string[] memory, uint256[] memory, uint256[] memory, uint256[] memory, bytes32[] memory) {
        uint256[] memory productIds = new uint256[](productCount);
        string[] memory names = new string[](productCount);
@@ -75,4 +78,7 @@ contract ProductTraceability {
        Product storage product = products[_id];
        return product.sealHash == _sealHash;
    }
+
+    
 }
+
