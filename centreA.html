@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Supply Chain Management Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <!-- <link rel="stylesheet" href="/style1.css"> -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+
+        h3 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type=number],
+        input[type=text] {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        .container {
+            margin: 50px auto;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+<body>
+    <div class="container">
+
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+        </script>
+        <script type="text/javascript">
+            (function () {
+                emailjs.init("lHKlxlAvvIhrlDD5H");
+            })();
+        </script>
+
+
+        <script>
+
+
+
+            var markup = null;
+            var flag = 1;
+            const options = {
+                enableHighAccuracy: true,
+                // Get high accuracy reading, if available (default false)
+                timeout: 5000,
+                // Time to return a position successfully before error (default infinity)
+                maximumAge: 2000,
+                // Milliseconds for which it is acceptable to use cached position (default 0)
+            };
+            navigator.geolocation.watchPosition(success, error, options);
+            // Fires success function immediately and when user position changes
+            function success(pos) {
+
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                const accuracy = pos.coords.accuracy;
+
+                markup =
+                    `<a href="https://www.openstreetmap.org/#map=16/${lat}/${lng}">
+                Latitude :${lat}
+                Longitude :${lng}
+            </a>`;
+                console.log(markup);
+                // Accuracy in metres
+
+            }
+            function error(err) {
+                if (err.code === 1) {
+                    alert("Please allow geolocation access");
+                    // Runs if user refuses access
+                } else {
+                    alert("Cannot get current location");
+                    // Runs if there was a technical problem.
+                }
+            }
+
+
+
+
+            async function addHistory() {
+                const accounts = await ethereum.request({
+                    method: "eth_requestAccounts",
+                });
+                const now = new Date();
+                const formattedDateTime = now.toLocaleString('en-GB', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                }); // format date and time as DD/MM/YYYY, HH:MM:SS
+
+
+                const productId = document.getElementById("productId").value;
+                const myString = document.getElementById("secret_key").value;
+                const weight = document.getElementById("weight_check").value;
+                const tx = await contract.methods.addHistory(productId, "The History was added on " + formattedDateTime + " " + "and received by CENTRE-A" + "and the location of your goods is " + markup, myString, weight).send({ from: accounts[0] });
+                contract.methods.getProduct(productId).call({ from: accounts[0] }).then(async result => {
+                    console.log(result.sealHash);
+                });
+            }
+
+
+
+
+
+
+
+
+
+            const web3 = new Web3(window.ethereum);
+            const abi = [
+            {
+            "anonymous": false,
+            "inputs": [
+                {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+                },
+                {
+                "indexed": false,
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+                },
+                {
+                "indexed": false,
+                "internalType": "string",
+                "name": "manufacturer",
+                "type": "string"
+                },
+                {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+                },
+                {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "quantity",
+                "type": "uint256"
+                },
+                {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "weight",
+                "type": "uint256"
+                },
+                {
+                "indexed": false,
+                "internalType": "bytes32",
+                "name": "sealHash",
+                "type": "bytes32"
+                },
+                {
+                "indexed": false,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+                }
+            ],
+            "name": "NewProduct",
+            "type": "event"
+            },
+            {
+            "anonymous": false,
+            "inputs": [
+                {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+                },
+                {
+                "indexed": false,
+                "internalType": "string",
+                "name": "history",
+                "type": "string"
+                }
+            ],
+            "name": "ProductHistory",
+            "type": "event"
+            },
+            {
+            "anonymous": false,
+            "inputs": [
+                {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+                },
+                {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "isSealValid",
+                "type": "bool"
+                }
+            ],
+            "name": "SealVerified",
+            "type": "event"
+            },
+            {
+            "inputs": [
+                {
+                "internalType": "uint256",
+                "name": "_id",
+                "type": "uint256"
+                },
+                {
+                "internalType": "string",
+                "name": "_history",
+                "type": "string"
+                },
+                {
+                "internalType": "bytes32",
+                "name": "_sealHash",
+                "type": "bytes32"
+                },
+                {
+                "internalType": "uint256",
+                "name": "_weight",
+                "type": "uint256"
+                }
+            ],
+            "name": "addHistory",
+            "outputs": [
+                {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+            },
+            {
+            "inputs": [
+                {
+                "internalType": "string",
+                "name": "_name",
+                "type": "string"
+                },
+                {
+                "internalType": "string",
+                "name": "_manufacturer",
+                "type": "string"
+                },
+                {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+                },
+                {
+                "internalType": "uint256",
+                "name": "_quantity",
+                "type": "uint256"
+                },
+                {
+                "internalType": "uint256",
+                "name": "_weight",
+                "type": "uint256"
+                }
+            ],
+            "name": "createProduct",
+            "outputs": [
+                {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+            },
+            {
+            "inputs": [],
+            "name": "getAllProducts",
+            "outputs": [
+                {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+                },
+                {
+                "internalType": "string[]",
+                "name": "",
+                "type": "string[]"
+                },
+                {
+                "internalType": "string[]",
+                "name": "",
+                "type": "string[]"
+                },
+                {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+                },
+                {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+                },
+                {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+                },
+                {
+                "internalType": "bytes32[]",
+                "name": "",
+                "type": "bytes32[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+            },
+            {
+            "inputs": [
+                {
+                "internalType": "uint256",
+                "name": "_id",
+                "type": "uint256"
+                }
+            ],
+            "name": "getProduct",
+            "outputs": [
+                {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+                },
+                {
+                "internalType": "string",
+                "name": "manufacturer",
+                "type": "string"
+                },
+                {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+                },
+                {
+                "internalType": "uint256",
+                "name": "quantity",
+                "type": "uint256"
+                },
+                {
+                "internalType": "uint256",
+                "name": "weight",
+                "type": "uint256"
+                },
+                {
+                "internalType": "string[]",
+                "name": "history",
+                "type": "string[]"
+                },
+                {
+                "internalType": "bytes32",
+                "name": "sealHash",
+                "type": "bytes32"
+                },
+                {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+            },
+            {
+            "inputs": [],
+            "name": "productCount",
+            "outputs": [
+                {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+            },
+            {
+            "inputs": [
+                {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+                }
+            ],
+            "name": "products",
+            "outputs": [
+                {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+                },
+                {
+                "internalType": "string",
+                "name": "manufacturer",
+                "type": "string"
+                },
+                {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+                },
+                {
+                "internalType": "uint256",
+                "name": "quantity",
+                "type": "uint256"
+                },
+                {
+                "internalType": "uint256",
+                "name": "weight",
+                "type": "uint256"
+                },
+                {
+                "internalType": "bytes32",
+                "name": "sealHash",
+                "type": "bytes32"
+                },
+                {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+            },
+            {
+            "inputs": [
+                {
+                "internalType": "uint256",
+                "name": "_id",
+                "type": "uint256"
+                },
+                {
+                "internalType": "bytes32",
+                "name": "_sealHash",
+                "type": "bytes32"
+                }
+            ],
+            "name": "verifySeal",
+            "outputs": [
+                {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+            }
+        ]
+            const contract = new web3.eth.Contract(
+                abi,
+                "0xD67b78dfD5A8854A4E8677FFb3a412FbFF48a926"
+            );
+
+
+
+        </script>
+
+
+        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+        <h3>Add History</h3>
+        <form id="sendmail">
+            <input type="hidden" name="from_name">
+            <input type="hidden" name="email_id">
+            <input type="hidden" name="message">
+            <div class="form-group">
+                <label for="product-id">Product ID:</label>
+                <input type="number" class="form-control" id="productId" placeholder="Enter product ID">
+            </div>
+            <div class="form-group">
+                <label for="weight_check">Cumulative Weight Check:</label>
+                <input type="number" class="form-control" id="weight_check" placeholder="Enter Weight">
+            </div>
+            <div class="form-group">
+                <label for="secret_key">SecretKey:</label>
+                <input type="text" class="form-control" id="secret_key" placeholder="Enter Secret Key">
+            </div>
+            <div class="form-group">
+                <label for="history">History: CENTRE-A</label>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="addHistory(),success(pos)">Add
+                History</button>
+            <button type="submit" class="btn btn-primary">Confirm You Reached Center A</button>
+
+        </form>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+
+
+
+        window.onload = function () {
+            document.getElementById('sendmail').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                this.from_name.value = "ABCTRACTORS";
+                this.email_id.value = "abc@gmail.com";
+                this.message.value = "We have an update regarding your goods.Your goods has reached Warehouse A. Kindly Check the website for more updates.";
+
+
+                // these IDs from the previous steps
+                emailjs.sendForm('service_z4khvvy', 'template_jn24wqw', this)
+                    .then(function () {
+                        console.log('SUCCESS!');
+                     alert('Notification successfully sent')
+                    }, function (error) {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
