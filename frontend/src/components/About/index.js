@@ -28,7 +28,7 @@ const About = () => {
       <div className="about-page">
         <video src={video2} autoPlay loop muted></video>
         <div className="text-zone">
-          <h1>
+          <h1 className='text-about'>
             {/* <AnimatedLetters
               letterClass={letterClass}
               strArray={['T', 'I', 'T', 'L', 'E', ' ', ' BATA', ' ', 'YAAR !!!!']}
@@ -47,22 +47,22 @@ const About = () => {
         <div className="stage-cube-cont">
           <div className="cubespinner">
             <div className="face1">
-              <FontAwesomeIcon icon={faTruckField} color="#DD0031" />
+              <FontAwesomeIcon icon={faTruckField} color="#EB455F " />
             </div>
             <div className="face2">
-              <FontAwesomeIcon icon={faWarehouse} color="#F06529" />
+              <FontAwesomeIcon icon={faWarehouse} color="#EB455F " />
             </div>
             <div className="face3">
-              <FontAwesomeIcon icon={faPlaneDeparture} color="#28A4D9" />
+              <FontAwesomeIcon icon={faPlaneDeparture} color= "#EB455F" />
             </div>
             <div className="face4">
-              <FontAwesomeIcon icon={faShip} color="#5ED4F4" />
+              <FontAwesomeIcon icon={faShip} color="#EB455F " />
             </div>
             <div className="face5">
-              <FontAwesomeIcon icon={faTrainSubway} color="#EFD81D" />
+              <FontAwesomeIcon icon={faTrainSubway} color="#EB455F " />
             </div>
             <div className="face6">
-              <FontAwesomeIcon icon={faIndustry} color="#EC4D28" />
+              <FontAwesomeIcon icon={faIndustry} color="#EB455F " />
             </div>
           </div>
         </div>

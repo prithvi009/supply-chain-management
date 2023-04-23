@@ -17,20 +17,21 @@ function Cards() {
             <div className='cards__container'>
                 <div className='cards__wrapper'>
                     <ul className='cards__items'>
-
+                        <a href='https://gleeful-gumption-a9d8b1.netlify.app/'>
 
                         <CardItem
                             src={pic2}
                             text={<a className='links' href='https://gleeful-gumption-a9d8b1.netlify.app/'>Administration Panel</a>}
                             label='Services'
                         />
-
+</a>
+<a href="https://dapper-gelato-31f330.netlify.app/">
                         <CardItem
                             src={pic3}
                             text={<a className='links' href="https://dapper-gelato-31f330.netlify.app/">Customer Panel</a>}
                             label='product'
                         />
-
+</a>
 
                     </ul>
                     {/* <ul className='cards__items'>

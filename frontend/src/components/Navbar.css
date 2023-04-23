@@ -41,7 +41,7 @@
   border-radius: 100px;
   background-color: white; /* Green */
   border: none;
-  color: black;
+  color: #EB455F !important;
   padding: 10px 27px;
   text-align: center;
   text-decoration: none;
@@ -88,8 +88,12 @@
 }
 
 .nav-links:hover {
-  border-bottom: 2.5px solid #EB455F;
+  color: #EB455F !important;
+  border-bottom: 2.5px solid beige;
   transition: all 0.2s ease-out;
+}
+.text-new{
+  color: #EB455F !important;
 }
 
 .fa-bars {

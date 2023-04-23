@@ -5,7 +5,9 @@ video {
     position: absolute;
     z-index: -100;
 }
-
+.text-anim{
+    color: #f0566d !important;
+}
 .hero-container {
     /* background: url('../images/space1.jpeg') center center/cover no-repeat; */
     height: 100vh;

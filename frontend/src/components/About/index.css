@@ -7,6 +7,10 @@ video {
   z-index: -100;
 }
 
+.text-about{
+  color: #EB455F !important;
+}
+
 .bt {
   background-color: #4CAF50;
   /* Green */

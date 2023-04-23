@@ -11,7 +11,7 @@ function Hero() {
             <video src={videos} autoPlay loop muted></video>
             <h1>Ledger
 
-                <Typical
+                <Typical className="text-anim"
                     loop={Infinity}
                     wrapper='b'
                     steps={[
