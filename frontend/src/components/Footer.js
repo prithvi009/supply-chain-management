@@ -5,78 +5,32 @@ import './Footer.css'
 function Footer() {
     return (
         <div className='footer-container'>
-            <section className='foot-subscription'>
-                <p className='foot-subscription-heading'>Join us to get regular update  and best deals </p>
-                <p className='foot-subscription-text'>You can subcribe any time</p>
-                <div className='input-areas '>
-                    <form className='f'>
-                        <input placeholder='Your email' type='email' name='email' className='footer-input' />
-
-                        <br></br>
-                        <Button buttonStyle='btn--outline'>Subscribe</Button>
-                    </form>
-
-                </div>
-            </section>
-
             <div className='footer-links'>
                 <div className='footer-links-wrapper'>
                     <div className='footer-links-items'>
-                        <h2>About US</h2>
-                        <Link to='/Sign-up'>How it Works</Link>
-                        <Link to='/Sign-up'>Testimonials</Link>
-                        <Link to='/Sign-up'>Investors</Link>
-                        <Link to='/Sign-up'>Terms of Services</Link>
+                        <h2 class="footer-heading">Resources</h2>
+                        <Link to='/Sign-up' class="footer-list">How it Works</Link>
+                        <Link to='/Sign-up' class="footer-list">Testimonials</Link>
+                        <Link to='/Sign-up' class="footer-list">Investors</Link>
+                        <Link to='/Sign-up' class="footer-list">Terms of Services</Link>
                     </div>
 
                     <div className='footer-links-items'>
-                        <h2>Company</h2>
-                        <Link to='/Sign-up'>TRVL Instamart</Link>
-                        <Link to='/Sign-up'>TRVL Blogs</Link>
-                        <Link to='/Sign-up'>TRVL Genie</Link>
+                        <h2 class="footer-heading">Company</h2>
+                        <Link to='/Sign-up'>About us</Link>
+                        <Link to='/Sign-up'>Career</Link>
+                        <Link to='/Sign-up'>Teams</Link>
+                        <Link to='/Sign-up'>Contact us</Link>
 
                     </div>
+
 
                     <div className='footer-links-items'>
-                        <h2>Legal</h2>
-                        <Link to='/Sign-up'>Privacy Policy</Link>
-                        <Link to='/Sign-up'>Cookie Policy</Link>
-                        <Link to='/Sign-up'>Offer Terms</Link>
-                        <Link to='/Sign-up'>Phishing & Fraud </Link>
-                    </div>
+                        <h2 class="footer-heading">Use Cases</h2>
+                        <Link to='/Sign-up'>Delivery</Link>
+                        <Link to='/Sign-up'>Secure Box</Link>
+                        <Link to='/Sign-up'>On Time Delivery</Link>
 
-                    <div className='footer-links-items'>
-                        <h2>TRVL verse</h2>
-                        <Link to='/Sign-up'>Trivago</Link>
-                        <Link to='/Sign-up'>Make my trip</Link>
-                        <Link to='/Sign-up'>Yes-Go-Trip</Link>
-
-                    </div>
-
-
-                </div>
-            </div>
-
-            <div className='footer-icons'>
-                <div className='footer-icons-wrap'>
-
-                    <div className='footer-logo'>
-                        <Link to='/Sign-up'><i class='fab fa-typo3' ></i>TRVL</Link>
-                    </div>
-                    <small className='small'>TRVL <i class="fa-regular fa-copyright"></i> 2023</small>
-
-
-                    <div className='footer-icons-items'>
-                        <Link to='/Sign-up' target='_blank' aria-label='Instagram' className='footer-icons-items-links'><i class="fa-brands fa-instagram"></i></Link>
-                    </div>
-                    <div className='footer-icons-items'>
-                        <Link to='/Sign-up' target='_blank' aria-label='Instagram' className='footer-icons-items-links'><i class="fa-brands fa-facebook"></i></Link>
-                    </div>
-                    <div className='footer-icons-items'>
-                        <Link to='/Sign-up' target='_blank' aria-label='Instagram' className='footer-icons-items-links'><i class="fa-brands fa-twitter"></i></Link>
-                    </div>
-                    <div className='footer-icons-items'>
-                        <Link to='/Sign-up' target='_blank' aria-label='Instagram' className='footer-icons-items-links'><i class="fa-brands fa-linkedin"></i></Link>
                     </div>
 
 
@@ -84,6 +38,28 @@ function Footer() {
 
             </div>
 
+            <div class="line"></div>
+
+            <div className="frame41">
+                <div class="join-us">Join Us</div>
+
+                <div class="form-box">
+                    <form action="" class="form-field">
+                        <input type="email" placeholder='Enter Your Email address' class="input"/>
+                        <button class="btn-outline"><p className='btn-text'>JOIN</p></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="menu-footer">
+                <span class="menu-footer-content">Privacy Policy</span>
+                <span class="menu-footer-content">Term of Use</span>
+                <span class="menu-footer-content">Sale and Refund</span>
+                <span class="menu-footer-content">Legal</span>
+                <span class="menu-footer-content">SiteMap</span>
+            </div>
+
+            <div className="copyright"><span className='copyrightText'>@2023 All Right Reserved</span></div>
 
         </div >
     )
