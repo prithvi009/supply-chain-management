@@ -4,9 +4,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-
+.footer-heading{
+    margin: 40px;
+    display: flex;
+    gap: 10px;
+    
+}
 
 .foot-subscription {
     display: flex;
@@ -40,6 +46,8 @@
 .footer-links {
     width: 100%;
     margin: 0 auto;
+    width: 1206px;
+    height: 200px;
 }
 
 .footer-links-wrapper {
@@ -51,17 +59,159 @@
 .footer-links-items {
     display: flex;
     flex-direction: column;
-    /* new */
     text-align: left;
+    align-items: center;
+    width: 204px;
+    height: 197px;
+    left: 149px;
+    top: 56px;
     box-sizing: border-box;
+}
+
+.line{
+    margin-top: 48px;
+    width: 1142px;
+    height: 0px;
+    color: grey;
+    border: 1px solid #7B7E86;
 }
 
 .footer-links-items a {
     color: white;
     text-decoration: none;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
+.frame41{
+    width: 1206px;
+    height: 88px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+.join-us{
+    color: white;
+    position: absolute;
+    width: 82px;
+    height: 21px;
+    left: 32px;
+    top: 31px;  
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+}
+.form-box{
+    position: absolute;
+    width: 352px;
+    height: 50px;
+    right: 27px;
+    top: 16px;
 
+}
+.form-field{
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    background: #FFFFFF;
+    box-shadow: 0px 6px 12px -6px rgba(255, 255, 255, 0.25), 0px 8px 24px -4px rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+}
+.input{
+    outline: none;
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+    padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+    position: absolute;
+    left: 3.29%;
+    right: 26.86%;
+    top: 32%;
+    bottom: 30%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #B1B5BB;
+}
+.menu-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    gap: 40px;
+    height: 16px;
+    color: white;
+    margin-bottom: 20px;
+}
+.copyright{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 145px;
+    height: 16px;
+}
+.copyrightText{
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+.menu-footer-content{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+}
+.btn-outline{
+    outline: none;
+    -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+    padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 11px 39px;
+    gap: 10px;
+
+    position: absolute;
+    left: 75%;
+    right: 0.43%;
+    top: 6%;
+    bottom: 8%;
+
+    background: #000000;
+    box-shadow: 0px 6px 12px -6px rgba(255, 255, 255, 0.25), 0px 8px 24px -4px rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+}
+.btn-text{
+    width: 62px;
+    height: 16px;
+    margin: auto 0;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+}
 .footer-links-items a :hover {
     color: red;
     transition: 0.3s ease-out;
@@ -73,8 +223,11 @@
 }
 
 .footer-icons {
-    width: 100%;
-    margin-top: 40px;
+    position: absolute;
+    width: 310px;
+    height: 58px;
+    left: 866px;
+    top: 4px;
 }
 
 .footer-icons-items-links {
@@ -86,9 +239,11 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 90%;
-    margin: 8px 20px;
-    margin-bottom: 20px;
+    position: absolute;
+    width: 255px;
+    height: 24px;
+    left: 41px;
+    top: 21px;
 }
 
 .small {
