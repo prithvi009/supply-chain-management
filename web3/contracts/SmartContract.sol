@@ -46,4 +46,33 @@ contract ProductTraceability {
        Product storage product = products[_id];
        return (product.name, product.manufacturer, product.amount, product.quantity, product.weight, product.history, product.sealHash, product.sender);
    }
+   
+   function getAllProducts() public view returns (uint256[] memory, string[] memory, string[] memory, uint256[] memory, uint256[] memory, uint256[] memory, bytes32[] memory) {
+       uint256[] memory productIds = new uint256[](productCount);
+       string[] memory names = new string[](productCount);
+       string[] memory manufacturers = new string[](productCount);
+       uint256[] memory amounts = new uint256[](productCount);
+       uint256[] memory quantities = new uint256[](productCount);
+       uint256[] memory weights = new uint256[](productCount);
+       bytes32[] memory sealHashs = new bytes32[](productCount);
+
+       for (uint256 i = 1; i <= productCount; i++) {
+           Product storage product = products[i];
+           productIds[i-1] = i;
+           names[i-1] = product.name;
+           manufacturers[i-1] = product.manufacturer;
+           amounts[i-1] = product.amount;
+           quantities[i-1] = product.quantity;
+           weights[i-1] = product.weight;
+           sealHashs[i-1] = product.sealHash;
+       }
+
+       return (productIds, names, manufacturers, amounts, quantities, weights, sealHashs);
+   }
+
+   function verifySeal(uint256 _id, bytes32 _sealHash) public view returns (bool) {
+       require(_id > 0 && _id <= productCount, "Invalid product ID");
+       Product storage product = products[_id];
+       return product.sealHash == _sealHash;
+   }
 }
