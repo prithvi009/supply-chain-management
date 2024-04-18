@@ -6,12 +6,12 @@ require("@nomicfoundation/hardhat-toolbox");
 module.exports = {
   solidity: "0.8.18",
   networks:{
-    polygon_mumbai:{
-      url : `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
-      accounts: [`${process.env.POLYGON_PRIVATE_KEY}`],
+    sepolia:{
+      url : `https://eth-sepolia.g.alchemy.com/v2/BfttughRUHtl0Tcg-H1zqxYbz2InyhCI`,
+      accounts: [`cbfb507230c3642901e77468f0d5ba755a74a843279a150d9e02b1f1947d42a7`],
     }
   },
 };
 
 
-//0x09459b940003e4095EB1184Baee873d070f99B7f
+//0x5FbDB2315678afecb367f032d93F642f64180aa3

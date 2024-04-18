@@ -2,6 +2,7 @@
 
 
 async function createProduct() {
+  console.log("createProduct");
   var sendm=document.getElementById('cp');
     const name = document.getElementById("name").value;
     const manufacturer = document.getElementById("manufacturer").value;
@@ -263,7 +264,7 @@ async function createProduct() {
  
  
  const web3 = new Web3(window.ethereum);
- const abi = [
+ const abi =  [
   {
     "anonymous": false,
     "inputs": [
@@ -616,7 +617,7 @@ async function createProduct() {
 ]
 const contract = new web3.eth.Contract(
   abi,
-  "0x09459b940003e4095EB1184Baee873d070f99B7f"
+  "0x530407973ACD069Fb342FA4BA2965d58324C011a"
 );
 
  
