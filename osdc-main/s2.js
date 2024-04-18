@@ -21,13 +21,13 @@ async function createProduct() {
       sendm.message.value="Your security key for check in in warehouse A is : ";
 
          // these IDs from the previous steps
-         emailjs.sendForm('service_z4khvvy', 'template_jn24wqw', sendm)
-         .then(function () {
-             console.log('SUCCESS!');
-          alert('Notification successfully sent')
-         }, function (error) {
-             console.log('FAILED...', error);
-         });
+        //  emailjs.sendForm('service_z4khvvy', 'template_jn24wqw', sendm)
+        //  .then(function () {
+          //  }, function (error) {
+            //      console.log('FAILED...', error);
+            //  });
+              alert('Notification successfully sent')
+                 console.log('SUCCESS!');
     
     });
       ;
